@@ -1,9 +1,9 @@
 const util = require("util");
 const multer = require("multer");
 const crypto = require('crypto');
-var markdownpdf = require("markdown-pdf");
-var md5 = require('md5');
-var path = require('path');
+const markdownpdf = require("markdown-pdf");
+const md5 = require('md5');
+const path = require('path');
 fs = require("fs")
 
 const DIR = './public/uploads/';
