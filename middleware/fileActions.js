@@ -1,5 +1,10 @@
 const util = require("util");
 const multer = require("multer");
+const crypto = require('crypto');
+var markdownpdf = require("markdown-pdf");
+var md5 = require('md5');
+var path = require('path');
+fs = require("fs")
 
 const DIR = './public/uploads/';
 
@@ -8,9 +13,12 @@ let storage = multer.diskStorage({
         cb(null, DIR);
     },
     filename: (req, file, cb) => {
-        const fileName = file.originalname.toLowerCase().split(' ').join('-');
+        const ext = path.extname(file.originalname);
+        const baseName = path.basename(file.originalname, ext);
+        const concatFileName = Date.now()+baseName.toLowerCase().split(' ').join('-');
+        const fileName = md5(concatFileName)+ext;
         cb(null, fileName)
-    },
+    }
 });
 
 let upload = multer({
@@ -23,7 +31,7 @@ let upload = multer({
             cb(null, true);
         } else {
             cb(null, false);
-            return cb(new Error('File types allowed .md!'));
+            return cb(new Error('File types allowed markdown only!'));
         }
     }
 }).single("file");
