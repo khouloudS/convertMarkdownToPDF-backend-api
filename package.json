@@ -16,7 +16,6 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
-    "cors": "^2.8.5",
     "downloads-folder": "^3.0.1",
     "markdown-link-check": "^3.8.6",
     "md5": "^2.3.0",
