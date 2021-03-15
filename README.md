@@ -1,6 +1,6 @@
-# Markdown convert
+# Markdown converter
 
-Markdown converter is a javascript based backend API web service to convert Markdown files into PDF format using Node.js and Express.js .
+Markdown converter is a javascript based backend API web server to convert Markdown files into PDF format using Node.js and Express.js .
 
 ### Installation
 Clone or donwload 
@@ -8,7 +8,7 @@ Clone or donwload
 git clone https://github.com/khouloudS/convertMarkdownToPDF-backend-api
 ```
 
-Install the dependencies needed convertMarkdownToPDF-backend-api
+Install the dependencies needed by the converter.
 ```
 cd convertMarkdownToPDF-backend-api
 npm install
@@ -16,7 +16,7 @@ npm install
 
 ### Usage
 Markdown converter comes with three web services:
-1. Run the web server
+1. Start the web server
 ```
 npm start
 ```
@@ -35,13 +35,11 @@ Responses
 | Code        | Description |
 | ----------- | ----------- |
 | 200         |Uploaded     |
-| ----------- | ----------- |
 | 400         |Bad request  |
-| ----------- | ----------- |
 | 500         |Bad format   |
 
 
-3. Convert the uploaded file to pdf format:
+3. Convert the uploaded markdown file to a pdf format:
 > ```
 > GET file/convert/<file_id.md>
 > ```
@@ -56,9 +54,7 @@ Responses
 | Code        | Description  |
 | ----------- | ------------ |
 | 200         |Converted     |
-| ----------- | ------------ |
 | 404         |Not found     |
-| ----------- | ------------ |
 | 500         |Internal Error|
 
 Example:
@@ -81,9 +77,7 @@ Responses
 | Code        | Description  |
 | ----------- | ------------ |
 | 200         |Downloaded    |
-| ----------- | ------------ |
 | 404         |Not found     |
-| ----------- | ------------ |
 | 500         |Internal Error|
 
 Example:
