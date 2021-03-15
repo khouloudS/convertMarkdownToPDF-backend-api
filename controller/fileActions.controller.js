@@ -6,7 +6,7 @@ const path = require('path');
 
 const uploadFile = async (req, res) => {
     try {
-         await upload(req, res);
+        await upload(req, res);
         if (req.file == undefined) {
             return res.status(400).send({ message: "Choose a file to upload" });
         }
@@ -32,7 +32,12 @@ const convertFile = (req, res) => {
     const fileName = req.params.name;
     const ext = path.extname(fileName);
     const baseName = path.basename(fileName, ext);
-        markdownpdf().from(DIR+fileName).to(DIR+baseName+".pdf", function () {
+    if (!(fs.existsSync(DIR+fileName))) {
+        res.status(404).send({
+            message: `File not found`,
+        });
+    }
+    markdownpdf().from(DIR+fileName).to(DIR+baseName+".pdf", function () {
             try {
                 if (fs.existsSync(DIR+baseName+".pdf")) {
                     res.status(200).json({
@@ -64,7 +69,7 @@ const downloadFile = (req, res) => {
     try {
         res.download(DIR + fileName, (err) => {
             if (err) {
-                res.status(500).send({
+                res.status(404).send({
                     message: "File can not be downloaded: " + err,
                 });
             }
