@@ -41,7 +41,8 @@ const convertFile = (req, res) => {
             try {
                 if (fs.existsSync(DIR+baseName+".pdf")) {
                     res.status(200).json({
-                            "convert": true
+                            "convert": true,
+                            "pdfFile": baseName+".pdf"
                         });
                 }
             } catch(err) {
